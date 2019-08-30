@@ -1,0 +1,20 @@
+<div *ngIf="dialogdetails">
+  <div id="collapse1" class="panel-collapse collapse">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <input type="text" value="{{dialogdetails._titre}}">
+      </li>
+      <li class="list-group-item">
+        <input type="text" value="{{dialogdetails._par}}">
+      </li>
+      <li class="list-group-item">
+        <input type="text" value="{{dialogdetails._capt}}">
+      </li>
+      <li>
+        <input type="image" value="null">
+      </li>
+      <input type="submit" value="Update data"
+             (submit)="UpdateObject(dialogdetails._titre, dialogdetails._par, dialogdetails._capt)">
+    </ul>
+  </div>
+</div>

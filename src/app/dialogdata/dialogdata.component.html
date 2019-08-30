@@ -1,0 +1,13 @@
+
+<div class="container body">
+  <div class="panel-group">
+    <div>
+      <div class="panel-heading" *ngFor="let object of objectitles">
+        <a data-toggle="" aria-expanded="true" (click)="IsSelected(object)">
+          <i> {{object._titre}}</i>
+        </a>
+      </div>
+      <app-datadetails [dialogdetails] = "getObject(selected._id)"></app-datadetails>
+    </div>
+  </div>
+</div>
