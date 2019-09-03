@@ -8,40 +8,33 @@ import {Dialogdata} from '../../assets/models/dialogdata';
   styleUrls: ['./dialogdata.component.css']
 })
 export class DialogdataComponent implements OnInit {
-  uri = 'http://localhost:4000/dialogdata';
-  objecttitles;
-  dialogdata;
-  selected;
+  url = 'http://localhost:4000/dialogdata';
+  objectTitles;
+  selected: Dialogdata = null;
 
   constructor(private httpService: HttpClient) {
   }
 
-  IsSelected(object) {
-    this.selected = object;
-  }
-
-  getObject(id) {
-    this.httpService.get(`${this.uri + '/' + id}`).subscribe(
+  IsSelected(object): void {
+    this.httpService.get(`${this.url}/${object._id}`).subscribe(
       data => {
-        this.dialogdata = data as string;
+        this.selected = data as Dialogdata;
+        console.log(this.selected);
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);
       }
     );
-    return this.dialogdata;
   }
 
   ngOnInit() {
-    this.httpService.get(`${this.uri + '/titre'}`).subscribe(
+    this.httpService.get(`${this.url}/titre`).subscribe(
       data => {
-        console.log(data);
-        this.objecttitles = data as string [];	 // FILL THE ARRAY WITH DATA.
+        this.objectTitles = data as string [];	 // FILL THE ARRAY WITH DATA.
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);
       }
     );
-
   }
 }

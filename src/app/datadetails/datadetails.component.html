@@ -1,20 +1,27 @@
 <div *ngIf="dialogdetails">
-  <div id="collapse1" class="panel-collapse collapse">
+  <div id="" class="">
     <ul class="list-group">
       <li class="list-group-item">
-        <input type="text" value="{{dialogdetails._titre}}">
+        <input [(ngModel)]="dialogdetails._titre"
+               placeholder="{{dialogdetails._titre}}"
+               size="{{dialogdetails._titre.length}}">
       </li>
       <li class="list-group-item">
-        <input type="text" value="{{dialogdetails._par}}">
+        <textarea [(ngModel)]="dialogdetails._par"
+                  placeholder="{{dialogdetails._par}}"
+                  cols="100%" rows="5"></textarea>
       </li>
       <li class="list-group-item">
-        <input type="text" value="{{dialogdetails._capt}}">
+        <textarea [(ngModel)]="dialogdetails._capt"
+                  placeholder="{{dialogdetails._capt}}"
+                  cols="100%" rows="5"></textarea>
       </li>
       <li>
         <input type="image" value="null">
       </li>
-      <input type="submit" value="Update data"
-             (submit)="UpdateObject(dialogdetails._titre, dialogdetails._par, dialogdetails._capt)">
     </ul>
+    <button type="submit" class="btn btn-success" style="width: 50%; position: center"
+            (click)="UpdateObject()">Update data
+    </button>
   </div>
 </div>

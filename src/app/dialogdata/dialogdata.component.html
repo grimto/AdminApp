@@ -1,13 +1,14 @@
-
 <div class="container body">
   <div class="panel-group">
-    <div>
-      <div class="panel-heading" *ngFor="let object of objectitles">
-        <a data-toggle="" aria-expanded="true" (click)="IsSelected(object)">
-          <i> {{object._titre}}</i>
-        </a>
-      </div>
-      <app-datadetails [dialogdetails] = "getObject(selected._id)"></app-datadetails>
-    </div>
+    <ul>
+      <li *ngFor="let object of objectTitles"
+          [class.selected]="object === selected"
+          (click)="IsSelected(object)">
+        <div class="panel-heading">
+            <p> {{object._titre}}</p>
+        </div>
+      </li>
+    </ul>
   </div>
+  <app-datadetails [dialogdetails]="selected"></app-datadetails>
 </div>

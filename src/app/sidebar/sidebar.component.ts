@@ -8,7 +8,7 @@ declare interface RouteInfo {
 }
 // routes for collections
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard', class: ''},
+  { path: '/', title: 'Dashboard', class: ''},
   { path: '/dialogdata', title: 'Dialog Data', class: ''}
 ];
 

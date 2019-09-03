@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Dialogdata} from '../../assets/models/dialogdata';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-datadetails',
@@ -9,12 +10,17 @@ import {Dialogdata} from '../../assets/models/dialogdata';
 })
 export class DatadetailsComponent implements OnInit {
   @Input() dialogdetails: Dialogdata;
-  uri = 'http://localhost:4000/dialogdata';
-  constructor(private httpService: HttpClient) { }
+  url = 'http://localhost:4000/dialogdata';
 
-  UpdateObject(title, paragraph, caption) {
-    const object = {title, paragraph, caption};
-    this.httpService.put(`${this.uri + '/update/' + title}`, object);
+  constructor(private httpService: HttpClient) {
+  }
+
+  UpdateObject() {
+    console.log(this.dialogdetails);
+    return this
+      .httpService
+      .put(`${this.url}/updateId/${this.dialogdetails._id}`,
+        this.dialogdetails);
   }
 
   ngOnInit() {
